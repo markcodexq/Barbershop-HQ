@@ -11,9 +11,58 @@ end
 class Barber < ActiveRecord::Base
 end
 
-get '/' do
+class Contact < ActiveRecord::Base
+end
+
+before do
 	@barbers = Barber.order "created_at DESC"
+end
+
+get '/' do
 	erb :index			
+end
+
+get '/visit' do	
+	erb :visit
+end
+
+post '/visit' do
+
+	@user_name = params[:user_name]
+	@phone = params[:phone]
+	@date = params[:date]
+	@barber = params[:barber]
+	@colorpicker = params[:colorpicker]
+
+	client_new = Client.new(
+		name: @user_name,
+		phone: @phone,
+		datestamp: @date,
+		barber: @barber,
+		color: @color
+	)
+
+	client_new.save
+
+	
+	erb "User: #{@user_name}, Phone: #{@phone} Date: #{@date} Master: #{@barber} Color: #{@colorpicker}"
+end
+
+get '/contacts' do
+	erb :contacts
+end
+
+post '/contacts' do
+	@email = params[:email_c]
+	@message = params[:message_c]
+
+	contact_new = Contact.new(
+		email: @email,
+		message: @message
+	)
+
+	contact_new.save
+	erb "Email: #{@email}, Message: #{@message}"
 end
 
 # b = Barber.new :name => "Mark"
