@@ -4,22 +4,22 @@
 <form action="/visit" method="POST">
   <div class="mb-3">
     <label for="user_n" class="form-label">User name</label>
-    <input name="user_name" value="<%= @user_name %>" type="login" class="form-control" id="user_n" placeholder="Enter your name" >
+    <input name="client[name]" value="<%= @user_name %>" type="login" class="form-control" id="user_n" placeholder="Enter your name" >
   </div>
 
   <div class="mb-3">
     <label for="phone_n" class="form-label">Phone number</label>
-    <input name="phone" value="<%= @phone %>" type="phone" class="form-control" id="phone_n" placeholder="+1()" >
+    <input name="client[phone]" value="<%= @phone %>" type="phone" class="form-control" id="phone_n" placeholder="+1()" >
   </div>
 
   <div class="mb-3">
     <label for="date" class="form-label">Date Time</label>
-    <input name="date" value="<%= @date %>" type="date" class="form-control" id="date">
+    <input name="client[datestamp]" value="<%= @date %>" type="date" class="form-control" id="date">
   </div>
   
   <div class="mb-3">
     <label for="selected_m" class="form-label">Choice the master</label>
-    <select id="selected_m" class="form-select" name="barber" aria-label="Default select example">
+    <select id="selected_m" class="form-select" name="client[barber]" aria-label="Default select example">
       
       <% @barbers.each do |barber|%>
         <option <%= @barber ==  barber['name'] ? 'selected' : '' %>><%= barber['name'] %></option>
@@ -30,7 +30,7 @@
   
   <div class="form-group">
   <label>Which color do you want to change</label>
-  <select name="colorpicker" id="color">
+  <select name="client[color]" id="color">
     <option value="#7bd148">Green</option>
     <option value="#5484ed">Bold blue</option>
     <option value="#a4bdfc">Blue</option>
