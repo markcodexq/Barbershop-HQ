@@ -80,6 +80,11 @@ post '/contacts' do
 	erb "Email: #{@email}, Message: #{@message}"
 end
 
+
+get '/barber/:id' do
+	erb :barber
+end
+
 # b = Barber.new :name => "Mark"
 # b.new_record?
 # b.save
