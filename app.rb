@@ -49,10 +49,12 @@ post '/visit' do
 	# client_new.save
 
 	client_new = Client.new params[:client]
-
-	client_new.save
-	
-	erb "User: #{}, Phone: #{@phone} Date: #{@date} Master: #{@barber} Color: #{@colorpicker}"
+	if client_new.save
+		erb "Thanks for the future visit"
+	else 
+		@error = client_new.errors.full_messages.first
+	end
+	erb :visit
 end
 
 get '/contacts' do
