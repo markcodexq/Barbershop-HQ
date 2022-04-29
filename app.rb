@@ -86,6 +86,11 @@ get '/barber/:id' do
 	erb :barber
 end
 
+get '/bookings' do
+	@client_l = Client.order 'created_at desc'
+	erb :bookings
+end
+
 # b = Barber.new :name => "Mark"
 # b.new_record?
 # b.save
