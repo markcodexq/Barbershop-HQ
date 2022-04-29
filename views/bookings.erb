@@ -1,7 +1,7 @@
 <h2>Clients List:</h2>
 
 <ol>
-<% @client_l.each do |client|%>
-    <li><%= client.name%></li>
+<% @clients.each do |client|%>
+    <li><a href="/bookings/<%= client.id %>"><%= client.name%></a></li>
 <%end%>
 </ol>
