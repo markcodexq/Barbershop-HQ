@@ -6,10 +6,10 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "barbershop.db"}
 
 class Client < ActiveRecord::Base
-	validates :name, {:presence => true}
-	validates :phone, {:presence => true}
-	validates :datestamp, {:presence => true}
-	validates :color, {:presence => true}
+	validates :name, presence: true, length: { minimum: 3 }
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -27,6 +27,7 @@ get '/' do
 end
 
 get '/visit' do	
+	@client_new = Client.new
 	erb :visit
 end
 
@@ -48,13 +49,14 @@ post '/visit' do
 
 	# client_new.save
 
-	client_new = Client.new params[:client]
-	if client_new.save
+	@client_new = Client.new params[:client]
+	if @client_new.save
 		erb "Thanks for the future visit"
 	else 
-		@error = client_new.errors.full_messages.first
+		@error = @client_new.errors.full_messages.first
+		erb :visit
 	end
-	erb :visit
+	
 end
 
 get '/contacts' do

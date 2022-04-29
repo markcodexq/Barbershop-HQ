@@ -4,17 +4,17 @@
 <form action="/visit" method="POST">
   <div class="mb-3">
     <label for="user_n" class="form-label">User name</label>
-    <input name="client[name]" value="<%= @user_name %>" type="login" class="form-control" id="user_n" placeholder="Enter your name" >
+    <input name="client[name]" value="<%= @client_new.name %>" type="login" class="form-control" id="user_n" placeholder="Enter your name" >
   </div>
 
   <div class="mb-3">
     <label for="phone_n" class="form-label">Phone number</label>
-    <input name="client[phone]" value="<%= @phone %>" type="phone" class="form-control" id="phone_n" placeholder="+1()" >
+    <input name="client[phone]" value="<%= @client_new.phone %>" type="phone" class="form-control" id="phone_n" placeholder="+1()" >
   </div>
 
   <div class="mb-3">
     <label for="date" class="form-label">Date Time</label>
-    <input name="client[datestamp]" value="<%= @date %>" type="date" class="form-control" id="date">
+    <input name="client[datestamp]" value="<%= @client_new.datestamp %>" type="date" class="form-control" id="date">
   </div>
   
   <div class="mb-3">
